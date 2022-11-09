@@ -1,5 +1,5 @@
 * {
-    border:0px solid;
+    border:1px solid;
 }
 body {
     margin: 0;
@@ -22,8 +22,12 @@ header {
 
 main {
     padding:10px;
-    padding-top: 0;
     flex:1;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+    gap: 20px;
+    text-align: center;
 }
 
 footer {
@@ -32,15 +36,20 @@ footer {
     font-size: larger;
 }
 
+.tools {
+    flex:1;
+}
+
 .gridContainer {
+    flex: 1;
     display:grid;
-    width:100%;
-    aspect-ratio: 1;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
+    justify-content: center;
+    grid-template-columns: repeat(16, 20px);
+    grid-template-rows: repeat(16, 20px);
 }
 
 .gridContent {
     border:1px solid #eeeeee;
     color: #eeeeee;
 }
+

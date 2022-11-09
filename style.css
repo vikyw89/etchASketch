@@ -1,6 +1,4 @@
-* {
-    border:1px solid;
-}
+
 body {
     margin: 0;
     padding: 0;
@@ -14,10 +12,11 @@ body {
 }
 
 header {
-    padding:10px;
+    padding:20px;
     text-align: center;
     font-size: xx-large;
     font-weight: bolder;
+    background-color: #000000;
 }
 
 main {
@@ -41,15 +40,46 @@ footer {
 }
 
 .gridContainer {
-    flex: 1;
+    flex: 1 1 500px;
     display:grid;
+    align-self: center;
     justify-content: center;
-    grid-template-columns: repeat(16, 20px);
-    grid-template-rows: repeat(16, 20px);
+    aspect-ratio: 1;
+    border: 1px solid white;
 }
 
 .gridContent {
-    border:1px solid #eeeeee;
-    color: #eeeeee;
+    background-color:black;
+    border:#1c1c1c26 1px solid;
 }
 
+.gridContent:hover {
+    border-radius: 20px;
+}
+.dimension {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tools {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: #ffffff 2px solid;
+}
+
+.toolsTitle {
+    padding: 10px;
+    font-size: large;
+    font-weight: 500;
+    border-bottom: #ffffff solid 1px;
+}
+
+.toolsOptions {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+}

@@ -33,6 +33,7 @@ footer {
     padding:10px;
     text-align: center;
     font-size: larger;
+    background-color: #000000;
 }
 
 .tools {
@@ -49,13 +50,15 @@ footer {
 }
 
 .gridContent {
-    background-color:black;
     border:#1c1c1c26 1px solid;
 }
 
 .gridContent:hover {
 }
 
+.edited {
+
+}
 .dimension {
     display: flex;
     justify-content: space-between;

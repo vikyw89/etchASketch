@@ -1,4 +1,6 @@
-
+* {
+    border:1px solid white;
+}
 body {
     margin: 0;
     padding: 0;
@@ -81,8 +83,21 @@ footer {
 .toolsOptions {
     padding: 10px;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     align-content: flex-start;
+    gap:10px;
+}
+
+.input {
+    flex: 1;
+}
+
+#sizePicker {
+    width:40%;
+}
+
+.info {
+    flex:1;
+    text-align: left;
 }

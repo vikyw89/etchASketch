@@ -1,5 +1,5 @@
-let activeColor = "white"
-let bgColor = "black"
+let activeColor = "#eeeeee"
+let bgColor = "#000000"
 let activeSize = 16
 let mode = "drawing"
 
@@ -15,9 +15,10 @@ const editPixel = (e) => {
     } else if (mode === "copy") {
         const color = e.target.getAttribute('style').replace('background-color:','').replace(';','')
         activeColor = color
+        colorPicker.setAttribute('value',`${activeColor}`)
+        console.log(colorPicker)
         mode = "drawing"
     }
-
 }
 
 const generateGrid = (activeSize) => {

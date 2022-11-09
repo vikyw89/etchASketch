@@ -54,8 +54,8 @@ footer {
 }
 
 .gridContent:hover {
-    border-radius: 20px;
 }
+
 .dimension {
     display: flex;
     justify-content: space-between;

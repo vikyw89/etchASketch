@@ -1,4 +1,46 @@
-.grid {
+* {
+    border:0px solid;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1c1c1c;
+    color:#eeeeee;
+    font-family: Roboto;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding:10px;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+main {
+    padding:10px;
+    padding-top: 0;
+    flex:1;
+}
+
+footer {
+    padding:10px;
+    text-align: center;
+    font-size: larger;
+}
+
+.gridContainer {
     display:grid;
-    grid-template-columns: repeat(16, auto);
+    width:100%;
+    aspect-ratio: 1;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+}
+
+.gridContent {
+    border:1px solid #eeeeee;
+    color: #eeeeee;
 }

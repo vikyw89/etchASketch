@@ -59,7 +59,6 @@ const generateGrid = (activeSize) => {
     for (let i = 1; i <= activeSize*activeSize; i++) {
         const content = document.createElement('div')
         content.setAttribute('class', 'gridContent grid')
-        content.setAttribute('draggable','false')
         content.addEventListener('mousedown', editPixelHandler)
         content.addEventListener('mouseover', editPixelHandler)
         grid.appendChild(content)
@@ -74,8 +73,7 @@ document.querySelector('#sizePicker').addEventListener('input', sizePickerHandle
 document.querySelector('#clear').addEventListener('click', clearHandler)
 document.querySelector('#toggle-grid').addEventListener('click', toggleGridHandler)
 document.querySelector('#gridColorPicker').addEventListener('input', gridColorPickerHandler)
-window.addEventListener('mousedown', (e) => {
-    e.preventDefault()
+document.addEventListener('mousedown', (e) => {
     mouseDown = true
 })
 window.addEventListener('mouseup', () => (mouseDown = false))

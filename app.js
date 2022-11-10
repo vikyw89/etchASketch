@@ -1,58 +1,31 @@
+// Global variables
+
 let activeColor = "#eeeeee"
 let bgColor = "#000000"
 let activeSize = 16
 let mode = "drawing"
-
 let mouseDown = false
-window.addEventListener('mousedown', () => (mouseDown = true))
-window.addEventListener('mouseup', () => (mouseDown = false))
 
-const editPixel = (e) => {
-    if (e.type === 'mouseover' && !mouseDown) return
-    if (mode === 'drawing') {
-        e.target.setAttribute('style', `background-color:${activeColor};`)
-        e.target.classList.add('edited')
-    } else if (mode === "copy") {
-        const color = e.target.getAttribute('style').replace('background-color:','').replace(';','')
-        activeColor = color
-        colorPicker.setAttribute('value',`${activeColor}`)
-        console.log(colorPicker)
-        mode = "drawing"
-    }
-}
+// Event Handlers
 
-const generateGrid = (activeSize) => {
-    const grid = document.querySelector('.grid-container')
-    grid.innerHTML = ''
-    grid.setAttribute('style',`grid-template-rows: repeat(${activeSize}, 1fr);`)
-    grid.setAttribute('style',`grid-template-columns: repeat(${activeSize}, 1fr);`)
-    for (let i = 1; i <= activeSize*activeSize; i++) {
-        const content = document.createElement('div')
-        content.setAttribute('class', 'gridContent grid')
-        content.addEventListener('mousedown', editPixel)
-        content.addEventListener('mouseover', editPixel)
-        grid.appendChild(content)
-    }
-}
-
-const resizeGrid = (e) => {
-    e.target.value > 100
-        ? activeSize = 100
+const sizePickerHandler = (e) => {
+    e.target.value > 64
+        ? activeSize = 64
         : activeSize = e.target.value
     generateGrid(activeSize)
 }
 
-const setActiveColor = (e) => {
+const colorPickerHandler = (e) => {
     activeColor = e.target.value
     document.documentElement.style.setProperty('--pen-color', `${activeColor}`)
 }
 
-const setBgColor = (e) => {
+const bgColorPickerHandler = (e) => {
     bgColor = e.target.value
     document.documentElement.style.setProperty('--background-color', `${bgColor}`)
 }
 
-const clearDrawing = () => {
+const clearHandler = () => {
     generateGrid(activeSize)
 }
 
@@ -64,22 +37,47 @@ const toggleGridHandler = () => {
     })
 }
 
-// Features
+const gridColorPickerHandler = (e) => {
+    console.log(e.target.value)
+    document.documentElement.style.setProperty('--grid-color', `${e.target.value}`)
+}
 
-const colorPicker = document.querySelector('#colorPicker')
-colorPicker.addEventListener('input', setActiveColor)
+const editPixelHandler = (e) => {
+    if (e.type === 'mouseover' && !mouseDown) return
+    if (mode === 'drawing') {
+        e.target.setAttribute('style', `background-color:${activeColor};`)
+        e.target.classList.add('edited')
+    }
+}
 
-const bgColorPicker = document.querySelector('#bgColorPicker')
-bgColorPicker.addEventListener('input', setBgColor)
+const generateGrid = (activeSize) => {
+    const grid = document.querySelector('.grid-container')
+    grid.innerHTML = ''
+    grid.setAttribute('style',`grid-template-rows: repeat(${activeSize}, 1fr);`)
+    grid.setAttribute('style',`grid-template-columns: repeat(${activeSize}, 1fr);`)
 
-const sizePicker = document.querySelector('#sizePicker')
-sizePicker.addEventListener('input', resizeGrid)
+    for (let i = 1; i <= activeSize*activeSize; i++) {
+        const content = document.createElement('div')
+        content.setAttribute('class', 'gridContent grid')
+        content.setAttribute('draggable','false')
+        content.addEventListener('mousedown', editPixelHandler)
+        content.addEventListener('mouseover', editPixelHandler)
+        grid.appendChild(content)
+    }
+}
 
-const clear = document.querySelector('#clear')
-clear.addEventListener('click', clearDrawing)
+// Event Listeners
 
-const toggleGrid = document.querySelector('#toggle-grid')
-toggleGrid.addEventListener('click', toggleGridHandler)
+document.querySelector('#colorPicker').addEventListener('input', colorPickerHandler)
+document.querySelector('#bgColorPicker').addEventListener('input', bgColorPickerHandler)
+document.querySelector('#sizePicker').addEventListener('input', sizePickerHandler)
+document.querySelector('#clear').addEventListener('click', clearHandler)
+document.querySelector('#toggle-grid').addEventListener('click', toggleGridHandler)
+document.querySelector('#gridColorPicker').addEventListener('input', gridColorPickerHandler)
+window.addEventListener('mousedown', () => (mouseDown = true))
+window.addEventListener('mouseup', () => (mouseDown = false))
+
+// On page load
 
 window.addEventListener('load', generateGrid(activeSize))
 

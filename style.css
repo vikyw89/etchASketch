@@ -1,14 +1,15 @@
 :root {
     --pen-color: #eeeeee;
     --background-color: #000000;
+    --grid-color: #eeeeee;
 }
 
 
 * {
     margin:0;
     padding:0;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-family: Roboto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 body {
@@ -65,14 +66,15 @@ footer {
 }
 
 .grid{
-    outline: 1px solid rgb(255, 255, 255);
+    outline: 1px solid var(--grid-color);
     outline-offset: -1px;
     transition:1s;
 }
 
 .gridContent:hover {
     background-color: var(--pen-color);
-    scale:calc(1.2)
+    scale:calc(1.2);
+    border-radius: 20px;
 }
 
 .edited {

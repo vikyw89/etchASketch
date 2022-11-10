@@ -22,18 +22,17 @@ const editPixel = (e) => {
 }
 
 const generateGrid = (activeSize) => {
-    const grid = document.querySelector('.gridContainer')
+    const grid = document.querySelector('.grid-container')
     grid.innerHTML = ''
+    grid.setAttribute('style',`grid-template-rows: repeat(${activeSize}, 1fr);`)
+    grid.setAttribute('style',`grid-template-columns: repeat(${activeSize}, 1fr);`)
     for (let i = 1; i <= activeSize*activeSize; i++) {
         const content = document.createElement('div')
-        content.setAttribute('class', 'gridContent')
-        content.setAttribute('style', `background-color:${bgColor};`)
+        content.setAttribute('class', 'gridContent grid')
         content.addEventListener('mousedown', editPixel)
         content.addEventListener('mouseover', editPixel)
         grid.appendChild(content)
     }
-    grid.setAttribute('style',`grid-template-rows: repeat(${activeSize}, 1fr);`)
-    grid.setAttribute('style',`grid-template-columns: repeat(${activeSize}, 1fr);`)
 }
 
 const resizeGrid = (e) => {
@@ -45,26 +44,24 @@ const resizeGrid = (e) => {
 
 const setActiveColor = (e) => {
     activeColor = e.target.value
+    document.documentElement.style.setProperty('--pen-color', `${activeColor}`)
 }
 
 const setBgColor = (e) => {
     bgColor = e.target.value
-    const grid = document.querySelectorAll('.gridContent')
-    grid.forEach(content => {
-        if (content.classList.contains('edited')) {
-            return
-        } else {
-            content.setAttribute('style', `background-color:${bgColor};`)
-        }
-    })
+    document.documentElement.style.setProperty('--background-color', `${bgColor}`)
 }
 
 const clearDrawing = () => {
     generateGrid(activeSize)
 }
 
-const copyColor = () => {
-    mode = "copy"
+const toggleGridHandler = () => {
+    const pixels = document.querySelectorAll('.gridContent')
+    pixels.forEach(pixel=>{
+        pixel.classList.toggle('grid')
+        console.log(pixel)
+    })
 }
 
 // Features
@@ -81,8 +78,8 @@ sizePicker.addEventListener('input', resizeGrid)
 const clear = document.querySelector('#clear')
 clear.addEventListener('click', clearDrawing)
 
-const copy = document.querySelector('#copyColor')
-copy.addEventListener('click', copyColor)
+const toggleGrid = document.querySelector('#toggle-grid')
+toggleGrid.addEventListener('click', toggleGridHandler)
 
 window.addEventListener('load', generateGrid(activeSize))
 

@@ -1,14 +1,22 @@
+:root {
+    --pen-color: #eeeeee;
+    --background-color: #000000;
+}
+
+
+* {
+    margin:0;
+    padding:0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-family: Roboto;
+}
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #1c1c1c;
-    color:#eeeeee;
-    font-family: Roboto;
-    width: 100vw;
-    height: 100vh;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    background-color: #131516;
+    color:#d8d4cf;
 }
 
 header {
@@ -20,13 +28,13 @@ header {
 }
 
 main {
-    padding:10px;
     flex:1;
-    display: flex;
+    display:flex;
     justify-content: space-between;
     flex-wrap: wrap-reverse;
-    gap: 20px;
     text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 10px;
 }
 
 footer {
@@ -40,42 +48,56 @@ footer {
     flex:1;
 }
 
-.gridContainer {
+.grid-container {
     flex: 1 1 500px;
-    display:grid;
+    display: grid;
     align-self: center;
     justify-content: center;
     aspect-ratio: 1;
-    border: 1px solid white;
+    outline: 1px solid rgb(255, 255, 255);
+    outline-offset: -1px;
+    transition:1s;
 }
 
 .gridContent {
-    border:#1c1c1c26 1px solid;
+    transition:1s;
+    background-color: var(--background-color);
+}
+
+.grid{
+    outline: 1px solid rgb(255, 255, 255);
+    outline-offset: -1px;
+    transition:1s;
 }
 
 .gridContent:hover {
+    background-color: var(--pen-color);
+    scale:calc(1.2)
 }
 
 .edited {
-
 }
+
 .dimension {
     display: flex;
     justify-content: space-between;
 }
 
-.tools {
+.tools-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    border: #ffffff 2px solid;
+    outline: 1px solid rgb(255, 255, 255);
+    outline-offset: -1px;
+    background-color:#000000;
 }
 
 .toolsTitle {
     padding: 10px;
     font-size: large;
     font-weight: 500;
-    border-bottom: #ffffff solid 1px;
+    outline: 1px solid rgb(255, 255, 255);
+    outline-offset: -1px;
 }
 
 .toolsOptions {

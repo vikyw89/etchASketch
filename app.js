@@ -73,10 +73,11 @@ document.querySelector('#sizePicker').addEventListener('input', sizePickerHandle
 document.querySelector('#clear').addEventListener('click', clearHandler)
 document.querySelector('#toggle-grid').addEventListener('click', toggleGridHandler)
 document.querySelector('#gridColorPicker').addEventListener('input', gridColorPickerHandler)
-document.addEventListener('mousedown', (e) => {
+document.querySelector('.grid-container').addEventListener('mousedown', (e) => {
+    e.preventDefault()
     mouseDown = true
 })
-window.addEventListener('mouseup', () => (mouseDown = false))
+document.querySelector('.grid-container').addEventListener('mouseup', () => (mouseDown = false))
 
 // On page load
 

@@ -74,7 +74,7 @@ document.querySelector('#clear').addEventListener('click', clearHandler)
 document.querySelector('#toggle-grid').addEventListener('click', toggleGridHandler)
 document.querySelector('#gridColorPicker').addEventListener('input', gridColorPickerHandler)
 document.querySelector('.grid-container').addEventListener('pointerdown', (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     mouseDown = true
 })
 document.querySelector('.grid-container').addEventListener('pointerup', () => (mouseDown = false))

@@ -81,7 +81,7 @@ document.querySelector('.grid-container').addEventListener('pointerup', () => (m
 
 // On page load
 
-document.addEventListener('load', generateGrid(activeSize))
+document.querySelector('body').addEventListener('load', generateGrid(activeSize))
 
 
 
